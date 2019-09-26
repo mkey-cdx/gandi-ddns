@@ -12,10 +12,11 @@ class Gandi():
 
     def __init__(self):
         self.base_url = 'https://dns.api.gandi.net/api/v5'
+        self.__headers['Accept'] = "application/json"
 
     def load_config(self):
         try:
-            conf = configparser.ConfigParser(allow_no_value=True);
+            conf = configparser.ConfigParser(allow_no_value=True)
             conf.read(os.path.dirname(os.path.realpath(__file__)) + '/settings.ini')
             sections = conf.sections()
             if 'User' not in sections or 'DNS' not in sections:
